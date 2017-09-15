@@ -68,7 +68,9 @@ public class RecordProcessor {
 			return null;
 		}
 		
-		getDataFromFile(numberOfLinesInFile, inputFileLines);
+		if(!getDataFromFile(numberOfLinesInFile, inputFileLines))
+			return null;
+		
 		formatEmployeeData(numberOfLinesInFile, output);
 		
 		return output.toString();
@@ -111,7 +113,7 @@ public class RecordProcessor {
 	 * @param numberOfLinesInFile
 	 * @param inputFileLines
 	 */
-	private static void getDataFromFile(int numberOfLinesInFile, ArrayList<String> inputFileLines) {
+	private static boolean getDataFromFile(int numberOfLinesInFile, ArrayList<String> inputFileLines) {
 		
 		String currentLine = null;
 		String [] wordsInLine = null;
@@ -123,8 +125,11 @@ public class RecordProcessor {
 			if(wordsInLine.length != NUMBER_OF_COLUMNS)
 				System.err.println("Wrong number of columns"); //add throw right here 
 		
-			setIndividualEmployeeData(wordsInLine, i);
+			if(!setIndividualEmployeeData(wordsInLine, i))
+				return false;
 		}
+		
+		return true;
 	}
 	
 	
@@ -134,7 +139,7 @@ public class RecordProcessor {
 	 * @param wordsInLine
 	 * @param lineNumber
 	 */
-	private static void setIndividualEmployeeData(String [] wordsInLine, int lineNumber) {
+	private static boolean setIndividualEmployeeData(String [] wordsInLine, int lineNumber) {
 		
 		Employee employee = new Employee();
 		
@@ -146,12 +151,13 @@ public class RecordProcessor {
 			employee.setAge(Integer.parseInt(wordsInLine[2]));
 			employee.setPay(Double.parseDouble(wordsInLine[4]));
 		} catch(Exception e) {
-			System.err.println(e.getMessage());
+			return false;
 		}
 		
 		allEmployees.add(employee);
 		addToEmployeeCalculations(employee);
 		
+		return true;
 	}
 	
 	
