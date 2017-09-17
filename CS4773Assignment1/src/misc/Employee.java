@@ -17,7 +17,8 @@ public class Employee {
 	
 	/**
 	 * 
-	 * @author Zachary Stowers
+	 * 	Employee class that contains an individual employee's first name, last name, age, payment type 
+	 *  and payment amount.  
 	 *
 	 */
 	public static class LastNameComparator implements Comparator<Employee> {

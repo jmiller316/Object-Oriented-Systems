@@ -27,21 +27,12 @@ public class RecordProcessor {
 	private static ArrayList<Employee> allEmployees = new ArrayList<Employee>();	
 	private static final int NUMBER_OF_COLUMNS = 5;
 	
-	public static void main(String [] args) {	
-		String inputFile = "";
-		try {
-			inputFile = args[0];
-		} catch (Exception e) {
-			System.err.println("Argument Exception");
-		}
-		System.out.println(processFile(inputFile));		
-	}	
 	
 	/**
 	 * Takes the file and checks to see if the file is empty if not it stores the information and 
 	 * formated function to correctly format
 	 * @param inputFile
-	 * @return
+	 * @return a formatted string based on the input file 
 	 */
 	public static String processFile(String inputFile) {	
 		StringBuffer output = new StringBuffer();
@@ -87,7 +78,7 @@ public class RecordProcessor {
 	 * @param numberOfLinesInFile
 	 * @param inputFileLines
 	 */
-	private static boolean getDataFromFile(int numberOfLinesInFile, ArrayList<String> inputFileLines) {		
+	public static boolean getDataFromFile(int numberOfLinesInFile, ArrayList<String> inputFileLines) {		
 		String currentLine = null;
 		String [] wordsInLine = null;
 		
@@ -109,7 +100,7 @@ public class RecordProcessor {
 	 * @param wordsInLine
 	 * @param lineNumber
 	 */
-	private static boolean setIndividualEmployeeData(String [] wordsInLine, int lineNumber) {	
+	public static boolean setIndividualEmployeeData(String [] wordsInLine, int lineNumber) {	
 		Employee employee = new Employee();
 		employee.setFirstName(wordsInLine[0]);
 		employee.setLastName(wordsInLine[1]);
@@ -129,7 +120,7 @@ public class RecordProcessor {
 	 * Adds the correct employee payment type to each employee
 	 * @param employee
 	 */
-	private static void addToEmployeeCalculations(Employee employee) {	
+	public static void addToEmployeeCalculations(Employee employee) {	
 		sumOfAllAges += employee.getAge();
 		switch(employee.getPaymentType()) {
 			case "Commission":

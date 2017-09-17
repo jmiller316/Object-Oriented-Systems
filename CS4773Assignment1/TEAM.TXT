@@ -1,3 +1,7 @@
-This assignment took me/us x hours
+This assignment took us 10 hours
 
 List team member names below. If not team member names, grader will assume solo work.
+
+Rene Garza 
+Jeremiah Miller 
+Zachary Stowers 
